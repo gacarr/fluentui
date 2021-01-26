@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleRenderer } from './styleRenderers/types';
 import { Theme, PartialTheme } from './types';
 import { ICustomizerContext } from '@fluentui/utilities';
+import { MakeStylesRenderer } from '@fluentui/make-styles';
 
 /**
  * {@docCategory ThemeProvider}
@@ -51,4 +52,7 @@ export type ThemeProviderState = Omit<ThemeProviderProps, 'theme' | 'ref'> & {
   ref: React.RefObject<HTMLElement>;
 
   customizerContext: ICustomizerContext;
+
+  /** TODO: DESCRIBE ME */
+  makeStylesRenderer: MakeStylesRenderer;
 };

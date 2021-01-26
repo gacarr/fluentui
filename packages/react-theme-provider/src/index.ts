@@ -14,6 +14,8 @@ export * from './getStyleFromPropsAndOptions';
 export * from './tokensToStyleObject';
 export * from './useInlineTokens';
 
+export { makeStyles } from './makeStyles';
+
 export * from './styleRenderers/mergeStylesRenderer';
 export * from './styleRenderers/types';
 export * from './styleRenderers/useStyleRenderer';

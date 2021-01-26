@@ -3,6 +3,8 @@ import * as React from 'react';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { useTheme } from './useTheme';
 import { getId, ICustomizerContext } from '@fluentui/utilities';
+import { useDocument } from '@fluentui/react-window-provider';
+import { createDOMRenderer } from '@fluentui/make-styles';
 
 const themeToIdMap = new Map<Object, string>();
 
@@ -29,6 +31,7 @@ export const useThemeProviderState = (draftState: ThemeProviderState) => {
 
   // Pull contextual theme.
   const parentTheme = useTheme();
+  const document = useDocument();
 
   // Update the incoming theme with a memoized version of the merged theme.
   const theme = (draftState.theme = React.useMemo<Theme>(() => {
@@ -53,4 +56,6 @@ export const useThemeProviderState = (draftState: ThemeProviderState) => {
   if (draftState.theme.rtl !== parentTheme.rtl) {
     draftState.dir = draftState.theme.rtl ? 'rtl' : 'ltr';
   }
+
+  draftState.makeStylesRenderer = createDOMRenderer(document);
 };
